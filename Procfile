@@ -1,1 +1,1 @@
-web:gunicorn Grad_project --log-file -
+web: gunicorn Grad_project.wsgi --log-file -
