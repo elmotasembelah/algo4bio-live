@@ -1,0 +1,87 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href=" {% static '/css/binarysearchkmerindexing.css' %}">
+    <title>Binary-search K-mer index</title>
+</head>
+<body>
+    <nav class="logo ">
+        
+        <h1>algo4bio</h1>
+ 
+    
+</nav>
+
+<header>
+    <div class="main">
+        <h1>Binary-search K-mer Index</h1>
+</div>
+
+</header> 
+<br>
+<section>
+<div class="seq">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label><h3>Please enter the pattern</h3> </label>
+        <input id="text" type="text" name="seq1" placeholder="pattern" />
+        <br>
+        <br>
+        <input type="file" id="myfile" name="document1">
+        <br>
+        <label> <h3>Please enter the template</h3></label>
+        <input id="text" type="text" name="seq2" placeholder="template"/>
+        <br>
+        <br>
+        <input type="file" id="myfile" name="document2">
+        <br>
+        <br>
+        <br>
+
+            
+        <input class="text" type="text" name="index" placeholder="index"/>
+        <br>
+        <br>
+        <br>
+       
+        <button type="submit" id="button" name="calc" value="-1">Enter</button>
+        <br>
+        
+        <input id="reset" type="reset"/>
+        <br>
+        
+        <button type="submit" id="button" name="back" value="-1">Back to menu</button>
+       
+      
+    </form>
+</div>
+<hr>
+<hr>
+<div class="txt">
+    <h1>What are k-mers?</h1>
+    
+<p>The term k-mer typically refers to all the possible substrings of length k that are contained in a string.
+    <br> Counting all the k-mers in DNA/RNA sequencing reads is the preliminary step of many bioinformatics applications.
+
+</p>
+<h1>example</h1>
+<img src="{% static 'images/binary search kmer indexing/Database-indexing-Indexing-example-for-k-mers-of-length-3-During-indexing-two.png' %}" alt="">
+<h1>here is a video for more knowledge</h1>
+<div  class="ex">
+    <a href="https://www.youtube.com/watch?v=2UsmUgJtwAI">Indexing and k-mer indexes</a>
+    <br>
+    <a href="https://www.youtube.com/watch?v=DyZvATM9Hr8">Introduction to k-mers</a>
+    <br>
+    <a href="https://www.youtube.com/watch?v=zEsxJC0P2Vo">Introduction on counting k-mers</a>
+</div>
+
+
+</div>
+
+</body>
+</html>

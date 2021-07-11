@@ -1,0 +1,99 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamming Distance</title>
+    <link rel="stylesheet" type="text/css" href=" {% static '/css/hammingdistance.css' %}">
+</head>
+<body>
+    <nav class="logo ">
+        
+        <h1>algo4bio</h1>
+ 
+    
+</nav>
+
+<header>
+    <div class="main">
+        <h1>Hamming Distance</h1>
+</div>
+
+</header> 
+<br>
+<section>
+<div class="seq">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label><h3>Please enter the first sequence</h3> </label>
+        <input id="text" type="text" name="seq1" placeholder="First sequence" />
+        <br>
+        <br>
+        <input type="file" id="myfile" name="document1">
+        <br>
+        <label> <h3>Please enter the second sequence</h3></label>
+        <input id="text" type="text" name="seq2" placeholder="Second sequence"/>
+        <br>
+        <br>
+        <input type="file" id="myfile" name="document2">
+        <br>
+        <br>
+        <br>
+        <br>
+       
+        <button type="submit" id="button" name="calc" value="-1">Enter</button>
+        <br>
+        
+        <input id="reset" type="reset"/>
+        <br>
+        
+        <button type="submit" id="button" name="back" value="-1">Back to menu</button>
+       
+      
+    </form>
+
+</div>
+<hr>
+<hr>
+<div class="txt">
+    <h2>Hamming Distance between two strings</h2>
+    <p>You are given two strings of equal length, you have to find the Hamming Distance between these string. 
+        <br>
+        Where the Hamming distance between two strings of equal length is the number of positions at which the corresponding character is different. 
+    
+    </p>
+    <h3>Examples: </h3>
+    <div class="ex">
+        <p>
+            Input : str1[] = "geeksforgeeks", str2[] = "geeksandgeeks"
+            <br>
+    Output : 3
+    
+    <br>
+    Explanation : The corresponding character mismatch are highlighted.
+    <br>
+    "geeksforgeeks" and "geeksandgeeks"
+    <br>
+    
+    Input : str1[] = "1011101", str2[] = "1001001"
+    <br>
+    Output : 2
+    <br>
+    Explanation : The corresponding character mismatch are highlighted.
+    <br>
+    "1011101" and "1001001"
+        </p>
+    
+    </div>
+    <h4>Time complexity: O(n)</h4>
+    <h2>for more knwoledg about the approximate matching watch this video</h2>
+     <div class="ex">
+         <a href="https://www.youtube.com/watch?v=MCvHeW13DsE&list=PL2mpR0RYFQsBiCWVJSvVAO3OJ2t7DzoHA&index=30">Approximate matching, Hamming and edit distance</a>
+     </div>
+</div>
+
+</body>
+</html>

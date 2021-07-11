@@ -1,0 +1,126 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>naive exact matching</title>
+    <link rel="stylesheet" type="text/css" href=" {% static '/css/naiveexactmatching.css' %}">
+</head>
+<body>
+  <nav class="logo ">
+        
+    <h1>Algo4bio</h1>
+
+
+</nav>
+
+    <header>
+        <div class="main">
+            <h1>Naive Exact Matching</h1>
+    </div>
+
+   </header> 
+   <br>
+   <section>
+    <div class="seq">
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label><h3>Please enter the pattern sequence</h3> </label>
+        <input id="text" type="text" name="seq1" placeholder="pattern" />
+        <br>
+        <br>
+        <input type="file" id="myfile" name="document1">
+        <br>
+        <label> <h3>please enter template sequence</h3></label>
+        <input id="text" type="text" name = "seq2" placeholder="template"/>
+        <br>
+        <br>
+        <input type="file" id="myfile" name="document2">
+        <br>
+        <br>
+        <br>
+       
+        <button type="submit" id="button" name="calc" value="-1">Enter</button>
+        <br>
+        
+        <input id="reset" type="reset"/>
+        <br>
+        
+        <button type="submit" id="button" name="back" value="-1">Back to menu</button>
+       
+      
+    </form>
+
+    </div>
+    <hr>
+    <hr>
+    <div class="txt">
+      <h2>Naive algorithm for Pattern Searching</h2>
+      <p>Given a text txt[0..n-1] and a pattern pat[0..m-1], write a function search(char pat[], char txt[]) that prints all occurrences of pat[] in txt[]. You may assume that n > m. 
+  
+      </p>
+      <h3>Examples:</h3>
+      <div class="ex">
+          <p>
+              Input:  txt[] = "THIS IS A TEST TEXT"
+              <br>
+              pat[] = "TEST"
+              <br>
+              Output: Pattern found at index 10
+          </p>
+          
+          
+          <p>
+              Input:  txt[] =  "AABAACAADAABAABA"
+              <br>
+          pat[] =  "AABA"
+          <br>
+  Output: Pattern found at index 0
+  <br>
+          Pattern found at index 9
+          <br>
+          Pattern found at index 12
+          </p>
+      </div>
+      <img src="{% static 'images/naive exact matching/Pattern-Searching-2-1.png' %}" alt="">
+    <h2>Naive Pattern Searching: </h2>
+    <p>Slide the pattern over text one by one and check for a match. If a match is found, then slides by 1 again to check for subsequent matches. 
+  
+    </p>
+    <h3>What is the best case? </h3>
+    <p>The best case occurs when the first character of the pattern is not present in text at all.
+        <br>
+      The number of comparisons in best case is O(n). 
+    </p>
+    <h3>What is the worst case ? </h3>
+    <p>
+      The worst case of Naive Pattern Searching occurs in following scenarios. 
+      <br>
+      1) When all characters of the text and pattern are same.
+      <div class="ex">
+          txt[] = "AAAAAAAAAAAAAAAAAA";
+          <br>
+  pat[] = "AAAAA";
+  
+      </div> 
+      2) Worst case also occurs when only the last character is different. 
+      <div class="ex">
+          txt[] = "AAAAAAAAAAAAAAAAAB";
+          <br>
+  pat[] = "AAAAB";
+  
+      </div> 
+      The number of comparisons in the worst case is O(m*(n-m+1)). Although strings which have repeated characters are not likely to appear in English text, they may well occur in other applications (for example, in binary texts). The KMP matching algorithm improves the worst case to O(n). We will be covering KMP in the next post. Also, we will be writing more posts to cover all pattern searching algorithms and data structures. 
+    </p>
+    <h2>here is a video to more knowledge</h2>
+    <div class="ex">
+      <a href="https://www.youtube.com/watch?v=KUbsdGm3G7s&list=PL2mpR0RYFQsBiCWVJSvVAO3OJ2t7DzoHA&index=16">Naive exact matching</a>
+    </div>
+    </div>
+    
+  
+</body>
+</html>

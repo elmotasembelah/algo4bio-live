@@ -1,0 +1,1 @@
+web: gunicorn Grad_project --log-file -

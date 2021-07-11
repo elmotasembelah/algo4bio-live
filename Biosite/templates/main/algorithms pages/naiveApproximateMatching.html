@@ -1,0 +1,83 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> naive approximate matching</title>
+    <link rel="stylesheet" type="text/css" href=" {% static '/css/naiveapproximatematching.css' %}">
+</head>
+<body>
+    <nav class="logo ">
+        
+            <h1>algo4bio</h1>
+     
+        
+    </nav>
+    
+    <header>
+        <div class="main">
+            <h1>Naive Approximate Matching</h1>
+    </div>
+
+   </header> 
+   <br>
+   <section>
+    <div class="seq">
+        
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label><h3>Please enter the pattern sequence</h3> </label>
+            <input id="text" type="text" name="seq1" placeholder="pattern" />
+            <br>
+            <br>
+            <input type="file" id="myfile" name="documet1">
+            <br>
+            <label> <h3>Please enter the template sequence</h3></label>
+            <input id="text" type="text" name="seq2" placeholder="template"/>
+            <br>
+            <br>
+            <input type="file" id="myfile" name="document2">
+            <br>
+            <br>
+            <br>
+    
+                
+            <input class="text" type="text" name="max distance" placeholder="max distance"/>
+            <br>
+            <br>
+            <br>
+           
+            <button type="submit" id="button" name="calc" value="-1">Enter</button>
+            <br>
+            
+            <input id="reset" type="reset"/>
+            <br>
+            
+            <button type="submit" id="button" name="back" value="-1">Back on menu</button>
+           
+          
+        </form>
+    </div>
+    <hr>
+    <hr>
+    <div class="txt">
+        <h2>Approximate string matching</h2>
+        <p>It is a teqnique of finding approximate matches to a pattern in a string</p>
+         <h3>approximate matching is an update for the exact matching</h3>
+         <p> the difference between the exact and the approximate matching is that: <br>
+            the exact matching: does not allow for mistakes (mutations) when it finds a mistake it stop <br>
+            but in the approximate matching it allows for mismatches (mutations) between the two sequences because in the real life there are mutations </p>
+    <h3>types of mistake</h3>
+        <img src="{% static 'images/naive approximate matching/editdistance_0.gif' %}" alt="">
+         <h2>for more knwoledg about the approximate matching watch this video</h2>
+         <div class="ex">
+             <a href="https://www.youtube.com/watch?v=MCvHeW13DsE&list=PL2mpR0RYFQsBiCWVJSvVAO3OJ2t7DzoHA&index=30">Approximate matching, Hamming and edit distance</a>
+         </div>
+    </div>
+    
+
+</body>
+</html>

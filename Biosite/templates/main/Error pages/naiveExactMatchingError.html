@@ -1,0 +1,42 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href=" {% static '/css/NaiveExactMatchingResult.css' %}">
+    <title> result of naive exact matching</title>
+</head>
+<body>
+    <nav class="logo ">
+        
+        <h1>algo4bio</h1>
+ 
+    
+    </nav>
+
+
+<section>
+    <div class="res"> 
+        <h1>The Result</h1>
+        <div class="result">
+            <h2 class="h5 mb-2" style="padding: 25px 50px 50px 50px;">
+                {{result.error}}
+            </h2>
+        </div>
+        <form>
+            {% csrf_token %}
+            <button id="button"  type="submit" name="sister" value="-1" type="button">Go to sister algorithm</button>
+        <br>
+        <br>
+        <button id="button"  type="submit" name="back" value="-1" type="button">Back to menu</button>
+
+        </form>
+        
+
+    </div>
+</section>
+</body>
+</html>

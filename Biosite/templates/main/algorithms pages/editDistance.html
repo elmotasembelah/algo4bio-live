@@ -1,0 +1,122 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href=" {% static '/css/edit distance.css' %}">
+    <title>Edit Distance</title>
+</head>
+<body>
+    <nav class="logo ">
+        
+        <h1>algo4bio</h1>
+ 
+    
+</nav>
+
+<header>
+    <div class="main">
+        <h1>Edit Distance</h1>
+</div>
+
+</header> 
+<br>
+<section>
+<div class="seq">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label><h3>Please enter the first sequence</h3> </label>
+        <input id="text" type="text" name="seq1" placeholder="First sequence" />
+        <br>
+        <br>
+        <input type="file" id="myfile" name="document1">
+        <br>
+        <label> <h3>Please enter the second sequence</h3></label>
+        <input id="text" type="text" name="seq2" placeholder="Second sequence"/>
+        <br>
+        <br>
+        <input type="file" id="myfile" name="document2">
+        <br>
+        <br>
+        <br>
+        <br>
+       
+        <button type="submit" id="button" name="calc" value="-1">Enter</button>
+        <br>
+        
+        <input id="reset" type="reset"/>
+        <br>
+        
+        <button type="submit" id="button" name="back" value="-1">Back to menu</button>
+       
+      
+    </form>
+</div>
+<hr>
+<hr>
+<div class="txt">
+    <h2>Edit Distance</h2>
+    <p>Given two strings str1 and str2 and below operations that can performed on str1. Find minimum number of edits (operations) required to convert ‘str1’ into ‘str2’.  
+        <br>
+       1- Insert
+       <br>
+    2-Remove
+    <br>
+    3-Replace
+    <br>
+    All of the above operations are of equal cost. 
+    </p>
+    <h3>Examples: </h3>
+    <div class="ex">
+        <p>
+            Input:   str1 = "geek", str2 = "gesek"
+            <br>
+    Output:  1
+    <br>
+    We can convert str1 into str2 by inserting a 's'.
+    <br>
+    
+    Input:   str1 = "cat", str2 = "cut"
+    <br>
+    Output:  1
+    <br>
+    We can convert str1 into str2 by replacing 'a' with 'u'.
+    <br>
+    <br>
+    
+    Input:   str1 = "sunday", str2 = "saturday"
+    <br>
+    Output:  3
+    <br>
+    Last three and first characters are same.  We basically
+    need to convert "un" to "atur".  This can be done using
+    below three operations. 
+    <br>
+    Replace 'n' with 'r', insert t, insert a
+        </p>
+    </div>
+    <h3>What are the subproblems in this case? </h3>
+    <p>The idea is process all characters one by one staring from either from left or right sides of both strings. 
+        <br>
+        Let us traverse from right corner, there are two possibilities for every pair of character being traversed.
+      </p>
+      <div class="ex">m: Length of str1 (first string)
+          <br>
+        n: Length of str2 (second string)
+    </div>
+    <p>
+       1-If last characters of two strings are same, nothing much to do. Ignore last characters and get count for remaining strings. So we recur for lengths m-1 and n-1.
+    <br>
+    2-Else (If last characters are not same), we consider all operations on ‘str1’, consider all three operations on last character of first string, recursively compute minimum cost for all three operations and take minimum of three values. 
+    <br>
+    1-Insert: Recur for m and n-1
+    2-Remove: Recur for m-1 and n
+    3-Replace: Recur for m-1 and n-1
+    </p>
+</div>
+
+</body>
+</html>

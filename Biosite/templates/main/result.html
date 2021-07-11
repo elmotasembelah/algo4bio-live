@@ -1,0 +1,39 @@
+{% extends 'main/base.html' %}
+
+    {% block title %}
+        Result
+    {% endblock %}
+
+    {% block content%}
+
+    
+    <body class="text-center"> 
+        <div style="margin-top: 200px; background-color: #FFF; border-radius: 10px;">
+            <h1 class="h3 mb-3" style="padding-top: 50px; ">
+            The result is
+            </h1>
+            <br>
+        
+        
+            <h2 class="h5 mb-2" style="padding: 25px 50px 50px 50px;">
+                {{resultdict.align1}}
+                <br>
+                {{resultdict.align2}}
+            </h2>
+            <br>
+            <form  method="GET" enctype="multipart/form-data" style=" background-color: rgb(255, 255, 255); margin-top: 125px; padding: 50px; border-radius: 10px;">
+                {% csrf_token %}
+                
+                <button class="btn btn-lg btn-primary btn-block" type="submit" name= "back" value=" =1">back</button>
+
+                <button class="btn btn-lg btn-primary btn-block" type="submit" name= "sister algo" value=" =1">sister</button>
+    
+            </form>
+        </div>
+        
+     </body> 
+ 
+    {% endblock%}
+
+
+

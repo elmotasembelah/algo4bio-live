@@ -1,0 +1,180 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>global sequence</title>
+    <link rel="stylesheet" type="text/css" href=" {% static '/css/globalAlignemt.css' %}">
+</head>
+<body>
+    <nav class="logo ">
+        
+        <h1>algo4bio</h1>
+ 
+    
+</nav>
+   <header>
+    <div class="main">
+     
+    
+     <h1>Global Sequence</h1>
+    </div>
+
+   </header> 
+   <br>
+   
+   
+   <section>
+       <div class="seq">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label> <h3>Please enter the first sequence</h3></label>
+            <input id="text" type="text" name ="seq1" placeholder="First sequence" />
+            <br>
+            <br>    
+            
+            <input type="file" id="myfile" name="document1">
+            <br>
+            <br>
+            <br>
+            <label> <h3>Please enter the second sequence</h3></label>
+            <input id="text" type="text" name="seq2" placeholder="Second sequence"/>
+            <br>
+            <br>
+            <input type="file" id="myfile" name="document2">
+            <br>
+            <br>
+            <br>
+
+            
+            <input class="text" type="text" name="match" placeholder="Match"/>
+            <input class="text" type="text" name="transition" placeholder="Transition"/>
+            <input class="text" type="text" name="transversion" placeholder="Transversion"/>
+            <input class="text" type="text" name="gap" placeholder="Gap"/>
+            <br>
+            <br>
+            <br>
+            <br>
+           
+            <button type="submit" id="button" name="calc" value="-1">Enter</button>
+            <br>
+            
+            <input id="reset" type="reset"/>
+            <br>
+            
+            <button type="submit" id="button" name="back" value="-1">Back to menu</button>
+           
+          
+        </form>
+       </div>
+       <hr>
+       <hr>
+<!--<h2>example </h2>
+       <img src="../algorithm1/Needleman-Wunsch_pairwise_sequence_alignment.png"> 
+-->
+       <div class="txt">
+        <h2>Working of Needleman -Wunsch Algorithm </h2>
+        <p>
+         To study the algorithm, consider the two given sequences.
+         <br>
+         <br>
+         CGTGAATTCAT (sequence #1) ,    GACTTAC (sequence #2)
+         <br>
+         <br>
+         The length (count of the nucleotides or amino acids) of the sequence 1 and sequence 2 are 11 and 7 respectively. The initial matrix is created with A+1 column’s and B+1 row’s (where A and B corresponds to length of the sequences). Extra row and column is given, so as to align with gap, at the starting of the matrix as shown in Figure 1.
+        </p>
+        <figure>
+        <img src="{% static 'images/global alignment/Figure 1(5).jpg' %}" alt="">
+
+        <figcaption>Figure 1: Initial matrix</figcaption>
+        </figure>
+        <p>After creating the initial matrix, scoring schema has to be introduced which can be user defined with specific scores. The simple basic scoring schema can be assumed as, if two residues (nucleotide or amino acid) at ith and jth position are same, matching score is 1 (S(i,j)= 1) or if the two residues at ith and jth position are not same, mismatch score is assumed as -1 (S(i,j)= -1 ). The gap score(w) or gap penalty is assumed as -1 .
+            <br>
+            <br>
+            *Note: The scores of match, mismatch and gap can be user defined, provided the gap penalty should be negative or zero.
+            <br>
+            <br>
+            Gap score is defined as penalty given to alignment, when we have insertion or deletion.
+            <br>
+            <br>
+ 
+            The dynamic programming matrix is defined with three different steps.
+            <br>
+            1.Initialization of the matrix with the scores possible.
+            <br>
+            2.Matrix filling with maximum scores.
+            <br>
+            3.Trace back the residues for appropriate alignment.
+            <br>
+        </p>
+        <p><h3>1.Initialization Step</h3></p>
+        <p>This example assumes that there is gap penalty. First row and first column of the matrix can be initially filled with 0. If the gap score is assumed, the gap score can be added to the previous cell of the row or column (Figure 2).
+        </p>
+        <figure>
+            <img src="{% static 'images/global alignment/Figure 2(4).jpg' %}" alt="">
+            <figcaption>Figure 2: Initialization of matrix</figcaption>
+        </figure>
+        <h3>2.Matrix Fill Step</h3>
+        <p>The second and crucial step of the algorithm is matrix filling starting from the upper left hand corner of the matrix. To find the maximum score of each cell, it is required to know the neighbouring scores (diagonal, left and right) of the current position. From the assumed values, add the match or mismatch (assumed) score to the diagonal value. Similarly add the gap score to the other neighbouring values. Thus, we can obtain three different values, from that take the maximum among them and fill the ith and jth position with the score obtained.
+         <br>
+         <br>
+         In terms of matrix positions, it is important to know  [M(i-1,j-1)+S(i,j),M(i,j-1)+w,M(i-1,j)+w]
+         <br>
+         <br>
+  
+ 
+         Overall the equation can be showed in the following manner
+         <br>
+         <img src="{% static 'images/global alignment/showimage.png' %}" alt="">
+         <br>
+         <br>
+         To score the matrix of the current position (the first position M1,1) the above stated formulae can be used. The first residue (nucleotides or amino acids) in the 2 sequences are ‘G’ and ‘C’. Since they are mismatching residues, the score would (Si,j=- 1) be -1.
+         <br>
+         <img src="{% static 'images/global alignment/showimage (1).png' %}" alt="">
+
+         <img src="{% static 'images/global alignment/showimage (2).png' %}" alt="">
+         
+         <br>
+         <img src="{% static 'images/global alignment/showimage (3).png' %}" alt="">
+
+         <br>
+         <img src="{% static 'images/global alignment/showimage (4).png' %}" alt="">
+
+         <br>
+         <img src="{% static 'images/global alignment/showimage (5).png' %}" alt="">
+
+         <br>
+         <br>
+         The obtained score -1 is placed in position i,j (1,1) of the scoring matrix. Similarly using the above equation and method, fill all the remaining rows and columns. Place the back pointers to the cell from where the maximum score is obtained, which are predecessors of the current cell (Figure 3).
+         <figure>
+             <img src="{% static 'images/global alignment/Figure 3(4).jpg' %}" alt="">
+>
+             <figcaption>Figure 3: Matrix filling with back pointers</figcaption>
+         </figure>
+        </p>
+        <h3>3.Trace back Step</h3>
+        <p>
+         The final step in the algorithm is the trace back for the best alignment. In the above mentioned example, one can see the bottom right hand corner score as -1. The important point to be noted here is that there may be two or more alignments possible between the two example sequences.
+         <br>
+         The current cell with value -1 has immediate predecessor, where the maximum score obtained is diagonally located and its value is 0. If there are two or more values which points back, suggests that there can be two or more possible alignments.
+         <br>
+         <br>
+         By continuing the trace back step by the above defined method, one would reach to the 0th row, 0th column. Following the above described steps, alignment of two sample sequences can be found. The best alignment among the alignments can be identified by using the maximum alignment score (match =5, mismatch=-1, gap=-2) which may be user defined (Figure 4).
+         <figure>
+            <img src="{% static 'images/global alignment/Figure 4(5).jpg' %}" alt="">
+             <figcaption>Figure 4: The possible Alignments with trace backing</figcaption>
+         </figure>
+  
+        </p>
+ 
+       </div>
+       
+   </section>
+
+   
+    
+</body>
+</html>

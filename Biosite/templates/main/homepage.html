@@ -1,0 +1,148 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href=" {% static '/css/homepage.css' %}">
+    <title>Home page</title>
+</head>
+<body 
+
+
+    style="background-color: #343a40;
+    background: url(/static/images/homepage/images.jpg);
+    background-repeat: no-repeat ; 
+    background-size: cover;
+    height: 600px;"
+
+
+   
+    
+>
+
+</body> 
+<div class="divlogo">
+    <nav class="logo">
+        <h1 >algo4bio</h1>
+    </nav>
+</div>
+
+<!--
+<div class="container">
+    <header class="d-flex justify-content-center py-3">
+      <ul class="nav nav-pills">
+        
+        <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Features</a></li>
+        
+        <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+      </ul>
+    </header>
+  </div>
+-->
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+<section class="sec1">
+    <h1 class="text1">
+        
+        Grasp The Power Of Bioinformatics
+
+        
+        
+    </h1>
+    <h2 class="text2">
+        Our Mission Is To Educate Bioinformatics Students To Find Value In Data
+    </h2>
+</section>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<section>
+    <div class="divtext">
+        <h2 class="text3" >
+            Welcome to algo4bio
+        </h2> 
+        <p class="text4">
+            Algo4bio Accelerates Data Science and Analytics of Bioinformatics Learning for Individuals, Companies, and Institutions Through Online Education.        </p> 
+        
+  </div>
+  <br>
+  <br>
+
+  <h2 class="text5" style="padding-top: 5;"> Here Are The Algorthims:</h2>
+
+  <div class="try">
+      
+    <div class="animated  a"> <a href="{% url 'naive exact matching' %}"> Naive Exact Matching</a> </div>
+    <div class="animated  b"> <a href="{% url 'boyer moore exact matching' %}"> Boyer-Moore Exact Matching  </a> </div>
+    <div class="animated  c"> <a href="{% url 'naive approximate matching' %}"> Naive Approximate Matching </a> </div>
+    <div class="animated  d"> <a href="{% url 'boyer moore approximate matching' %}"> Boyer-Moore Approximate Matching </a> </div>
+    <div class="animated  e"> <a href="{% url 'hamming distance' %}"> Hamming Distance </a> </div>
+    
+    <div class="animated  f"> <a href="{% url 'edit distance' %}"> Edit Distance </a> </div>
+    <div class="animated  g"> <a href="{% url 'binary search kmer indexing' %}"> Binary-search K-mer Index </a> </div>
+    <div class="animated  h"> <a href="{% url 'hashmap kmer indexing' %}"> Hashmap K-mer Indexing </a> </div>
+    <div class="animated  i"> <a href="{% url 'global alignment' %}"> Global Alignment </a> </div>
+    <div class="animated  j"> <a href="{% url 'localAlignment' %}"> Local Alignment </a> </div>
+    
+
+</div>
+
+<div>
+    <h2 class="text6">
+        Your Success is Our Success
+    </h2>
+</div>
+<!--
+    <hr>
+<div class="col-md-4 col-12">
+    <h3 class="footer-item text-primary " id="1"> About us </h3>
+    <p> Team from bioinformatics department  </p>
+    <p>  Assiut University  </p>
+   
+
+  </div>
+
+-->
+
+    <div class="animation">
+<img src="{% static 'images/homepage/unnamed.jpg' %}" alt="">
+
+<img src="{% static 'images/homepage/1200px-Facebook_icon.svg.png' %}" alt="">
+
+<img src="{% static 'images/homepage/Google-logo-1-resized.jpg' %}" alt="">
+
+<img src="{% static 'images/homepage/download.png' %}" alt="">
+
+    </div>
+    
+</section>
+
+    
+</body>
+</html>

@@ -1,0 +1,141 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boyer-Moore exact matching</title>
+    <link rel="stylesheet" type="text/css" href=" {% static '/css/boyermooreexactmatching.css' %}">
+    
+
+</head>
+<body>
+    <nav class="logo ">
+        
+        <h1>algo4bio</h1>
+ 
+    
+</nav>
+
+<header>
+    <div class="main">
+        <h1>Boyer-Moore Exact Matching</h1>
+</div>
+
+</header> 
+<br>
+<section>
+<div class="seq">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label><h3>please enter the pattern sequence</h3> </label>
+        <input id="text" type="text" name="seq1" placeholder="pattern" />
+        <br>
+        <br>
+        <input type="file" id="myfile" name="document1">
+        <br>
+        <label> <h3>please enter the template sequence</h3></label>
+        <input id="text" type="text" name="seq2"placeholder="template"/>
+        <br>
+        <br>
+        <input type="file" id="myfile" name="document2">
+        <br>
+        <br>
+        <br>
+        <br>
+       
+        <button type="submit" id="button" name="calc" value="-1">Enter</button>
+        <br>
+        
+        <input id="reset" type="reset"/>
+        <br>
+        
+        <button type="submit" id="button" name="back" value="-1">Back to menu</button>
+       
+      
+    </form>
+</div>
+<hr>
+<hr>
+<div class="txt">
+    <h2>Boyer Moore Algorithm for Pattern Searching</h2>
+    <p>Pattern searching is an important problem in computer science. When we do search for a string in a notepad/word file, browser, or database, pattern searching algorithms are used to show the search results. A typical problem statement would be- 
+        Given a text txt[0..n-1] and a pattern pat[0..m-1] where n is the length of the text and m is the length of the pattern, write a function search(char pat[], char txt[]) that prints all occurrences of pat[] in txt[]. You may assume that n > m. 
+    </p>
+    <h3>Examples: </h3>
+    <div class="ex">
+        <p>
+            Input:  txt[] = "THIS IS A TEST TEXT"
+            <br>
+            pat[] = "TEST"
+            <br>
+    Output: Pattern found at index 10
+    <br>
+    <br>
+    Input:  txt[] =  "AABAACAADAABAABA"
+    <br>
+            pat[] =  "AABA"
+            <br>
+    Output: <br> Pattern found at index 0
+    <br>
+            Pattern found at index 9
+            <br>
+            Pattern found at index 12
+        </p>
+    </div>
+    <img src="{% static 'images/boyer moore exact matching/Pattern-Searching-2.png' %}" alt="">
+    <p>
+        In this post, we will discuss the Boyer Moore pattern searching algorithm. Like KMP and Finite Automata algorithms, Boyer Moore algorithm also preprocesses the pattern. 
+    Boyer Moore is a combination of the following two approaches. 
+    <br>
+    1) Bad Character Heuristic 
+    <br>
+    2) Good Suffix Heuristic 
+    Both of the above heuristics can also be used independently to search a pattern in a text. Let us first understand how two independent approaches work together in the Boyer Moore algorithm. If we take a look at the Naive algorithm, it slides the pattern over the text one by one. KMP algorithm does preprocessing over the pattern so that the pattern can be shifted by more than one. The Boyer Moore algorithm does preprocessing for the same reason. It processes the pattern and creates different arrays for each of the two heuristics. At every step, it slides the pattern by the max of the slides suggested by each of the two heuristics. So it uses greatest offset suggested by the two heuristics at every step. 
+    <br>
+    Unlike the previous pattern searching algorithms, the Boyer Moore algorithm starts matching from the last character of the pattern.
+    
+    </p>
+    <h2>Bad Character Heuristic</h2>
+    <p>The idea of bad character heuristic is simple. The character of the text which doesn’t match with the current character of the pattern is called the Bad Character. Upon mismatch, we shift the pattern until – 
+        <br>
+        1) The mismatch becomes a match
+        <br>
+        2) Pattern P moves past the mismatched character.
+    </p>
+    <h2>Case 1 – Mismatch become match </h2>
+    <p>We will lookup the position of the last occurrence of the mismatched character in the pattern, and if the mismatched character exists in the pattern, then we’ll shift the pattern such that it becomes aligned to the mismatched character in the text T. 
+    </p>
+    <figure>
+        
+        <figcaption>case 1</figcaption>
+    </figure>
+    <h3>Explanation:</h3><p> In the above example, we got a mismatch at position 3. Here our mismatching character is “A”. Now we will search for last occurrence of “A” in pattern. We got “A” at position 1 in pattern (displayed in Blue) and this is the last occurrence of it. Now we will shift pattern 2 times so that “A” in pattern get aligned with “A” in text.
+    
+    </p>
+    <h2>Case 2 – Pattern move past the mismatch character </h2>
+    <p>We’ll lookup the position of last occurrence of mismatching character in pattern and if character does not exist we will shift pattern past the mismatching character. 
+    
+    </p>
+    <figure>
+        
+        <figcaption>case 2</figcaption>
+    </figure>
+    <h3>Explanation:</h3><p>Here we have a mismatch at position 7. The mismatching character “C” does not exist in pattern before position 7 so we’ll shift pattern past to the position 7 and eventually in above example we have got a perfect match of pattern (displayed in Green). We are doing this because “C” does not exist in the pattern so at every shift before position 7 we will get mismatch and our search will be fruitless.
+    
+    </p>
+    <p>The Bad Character Heuristic may take O(mn)  time in worst case. The worst case occurs when all characters of the text and pattern are same. For example, txt[] = “AAAAAAAAAAAAAAAAAA” and pat[] = “AAAAA”. The Bad Character Heuristic may take O(n/m) in the best case. The best case occurs when all all the characters of the text and pattern are different. 
+    
+    </p>
+    <h2>here is a video for more knowledge</h2>
+    <div class="ex">
+        <a  href="https://www.youtube.com/watch?v=4Xyhb72LCX4&list=PL2mpR0RYFQsBiCWVJSvVAO3OJ2t7DzoHA&index=19"> Boyer-Moore basics</a>
+    </div>
+    
+</div>
+
+</body>
+</html>
