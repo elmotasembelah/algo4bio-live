@@ -28,16 +28,16 @@
 <div class="seq">
     <form method="POST" enctype="multipart/form-data">
         <label><h3>Please enter the pattern sequence </h3> </label>
-        <input id="text" type="text" placeholder="pattern" />
+        <input id="text" name="seq1" type="text" placeholder="pattern" />
         <br>
         <br>
-        <input type="file" id="myfile" name="myfile">
+        <input type="file" id="myfile" name="document1">
         <br>
         <label> <h3>Please enter the template sequence</h3></label>
-        <input id="text" type="text" placeholder="template"/>
+        <input id="text" name="seq2" type="text" placeholder="template"/>
         <br>
         <br>
-        <input type="file" id="myfile" name="myfile">
+        <input type="file" id="myfile" name="document2">
         <br>
         <br>
         <br>
@@ -64,7 +64,7 @@
 <hr>
 <div class="txt">
     <h2>Approximate string matching</h2>
-        <p>It is a teqnique of finding approximate matches to a pattern in a string</p>
+        <p>It is a technique of finding approximate matches to a pattern in a string</p>
          <h3>approximate matching is an update for the exact matching</h3>
          <p> the difference between the exact and the approximate matching is that: <br>
             the exact matching: does not allow for mistakes (mutations) when it finds a mistake it stop <br>
