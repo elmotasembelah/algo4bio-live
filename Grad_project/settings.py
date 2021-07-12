@@ -25,7 +25,7 @@ SECRET_KEY = '3g4#%r&vw-w&8tw3#$ol^a(z^#j-wdt$g)h76+zu03tmzdpegg'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['algo4bio.herokuapp.com/', '127.0.0.1']
+ALLOWED_HOSTS = ['algo4bio.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
