@@ -13,7 +13,6 @@
     <nav class="logo ">
         
         <h1>algo4bio</h1>
- 
     
 </nav>
 
@@ -27,7 +26,7 @@
 <section>
 <div class="seq">
     <form method="POST" enctype="multipart/form-data">
-        
+        {% csrf_token %}
         <label><h3>Please enter the pattern</h3> </label>
         <input id="text" type="text" placeholder="pattern" />
         <br>
