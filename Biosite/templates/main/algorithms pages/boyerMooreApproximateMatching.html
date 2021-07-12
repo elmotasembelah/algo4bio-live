@@ -27,6 +27,7 @@
 <section>
 <div class="seq">
     <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
         <label><h3>Please enter the pattern sequence </h3> </label>
         <input id="text" name="seq1" type="text" placeholder="pattern" />
         <br>
